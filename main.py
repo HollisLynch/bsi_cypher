@@ -1,10 +1,8 @@
 from Crypto.Cipher import DES, Blowfish, AES
 from Crypto import Random
-import os
 
 def blowfish(plaintext):
-    """Docstring."""
-    print(blowfish.__doc__)
+    """The initialization vector to use for encryption or decryption."""
     iv = Random.new().read(Blowfish.block_size)
 
     print("1 - encypt\n2 - decrypt")
@@ -13,8 +11,12 @@ def blowfish(plaintext):
     if choice == 1:
         print("key: ")
         key = str(input())
+        """Create a new Blowfish cipher with Cipher FeedBack."""
+        """It transforms the underlying block cipher into a stream cipher."""
+        """When encrypting, each ciphertext segment contributes to the encryption of the next plaintext segment."""
         blowfish_encrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
         blowfish_decrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
+
         encrypted = blowfish_encrypt.encrypt(plaintext)
         print(f"encrypted: {encrypted}")
         print("Decrypt?")
