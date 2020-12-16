@@ -1,10 +1,13 @@
 # bsi_cypher
 
 Authors:
+
     Dmytro Yurchenko
+
     Daryna Kovyrina
 
 Algorithms:
+
     Advanced Encryption Standard
         AES is based on a design principle known as a substitution–permutation network, and is efficient in both software and hardware.
 
