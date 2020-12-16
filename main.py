@@ -3,6 +3,8 @@ from Crypto import Random
 import os
 
 def blowfish(plaintext):
+    """Docstring."""
+    print(blowfish.__doc__)
     iv = Random.new().read(Blowfish.block_size)
 
     print("1 - encypt\n2 - decrypt")
