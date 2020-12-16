@@ -21,4 +21,5 @@ Algorithms source:
     Crypto.Cipher package
 
 Other resources:
+    https://www.datacamp.com/community/tutorials/docstrings-python
     https://pycryptodome.readthedocs.io/en/latest/src/cipher/cipher.html
