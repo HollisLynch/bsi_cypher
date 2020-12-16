@@ -2,7 +2,12 @@ from Crypto.Cipher import DES, Blowfish, AES
 from Crypto import Random
 
 def blowfish(plaintext):
-    """The initialization vector to use for encryption or decryption."""
+    '''
+    The initialization vector to use for encryption or decryption.
+    Create a new Blowfish cipher with Cipher FeedBack.
+    CFB transforms the underlying block cipher into a stream cipher.
+    When encrypting, each ciphertext segment contributes to the encryption of the next plaintext segment.
+    '''
     iv = Random.new().read(Blowfish.block_size)
 
     print("1 - encypt\n2 - decrypt")
@@ -11,9 +16,6 @@ def blowfish(plaintext):
     if choice == 1:
         print("key: ")
         key = str(input())
-        """Create a new Blowfish cipher with Cipher FeedBack."""
-        """It transforms the underlying block cipher into a stream cipher."""
-        """When encrypting, each ciphertext segment contributes to the encryption of the next plaintext segment."""
         blowfish_encrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
         blowfish_decrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
 
@@ -34,6 +36,11 @@ def blowfish(plaintext):
         return decrypted
 
 def aes(plaintext):
+    """
+    iv_AES (byte string) - The initialization vector to use for encryption or decryption.
+    Create a new AES cipher.
+    CFB is a mode of operation which turns the block cipher into a stream cipher.
+    """
     iv_AES = Random.new().read(AES.block_size)
 
     print("1 - encypt\n2 - decrypt")
@@ -60,6 +67,12 @@ def aes(plaintext):
 
 
 def des(plaintext):
+    """
+    iv_DES (byte string) - The initialization vector to use for encryption or decryption.
+    Create a new DES cipher.
+    Electronic Code Book (ECB). This is the simplest encryption mode.
+    Each of the plaintext blocks is directly encrypted into a ciphertext block, independently of any other block.
+    """
     iv_DES = Random.new().read(DES.block_size)
 
     print("1 - encypt\n2 - decrypt")
@@ -97,3 +110,5 @@ if choose == 2:
     des(plaintext)
 if choose == 3:
     blowfish(plaintext)
+
+print(blowfish.__doc__)
