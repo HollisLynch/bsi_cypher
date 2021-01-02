@@ -2,17 +2,22 @@ from Crypto.PublicKey import ElGamal, RSA
 from Crypto.Util.number import GCD
 from Crypto import Random
 from Crypto.Random import random
-from Crypto.Hash import SHA
 from Crypto.Cipher import PKCS1_OAEP
 import base64
 
-
 def elgamal(message):
     key = ElGamal.generate(1024, Random.new().read)
-    hash = SHA.new(message).digest()
+    while 1:
+        k = random.StrongRandom().randint(1, key.p - 1)
 
-    obj = ElGamal.ElGamalobj.encrypt(message, key)
-    print(obj)
+        if GCD(k, key.p - 1) == 1:
+            break
+
+    e = key.encrypt(message, k)
+    d = key.decrypt(e)
+
+    print('encrypted message: {}'.format(e))
+    print('decrypted message: {}'.format(d))
 
 def rsa(message):
     key = RSA.generate(2048)
@@ -32,7 +37,11 @@ def rsa(message):
 
     print('decrypted message: {}'.format(decrypted_text))
 
-
+print("1 - elgamal\n2 - rsa")
+cipher = int(input())
 message = input('plaintext:')
 message = str.encode(message)
-elgamal(message)
+if cipher == 1:
+    elgamal(message)
+if cipher == 2:
+    rsa(message)
