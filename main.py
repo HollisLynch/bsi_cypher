@@ -11,9 +11,12 @@ def blowfish(plaintext):
     if choice == 1:
         print("key: ")
         key = str(input())
-        """Create a new Blowfish cipher with Cipher FeedBack."""
-        """It transforms the underlying block cipher into a stream cipher."""
-        """When encrypting, each ciphertext segment contributes to the encryption of the next plaintext segment."""
+        """
+        Create a new Blowfish cipher with Cipher FeedBack
+        It transforms the underlying block cipher into a stream cipher
+        When encrypting, each ciphertext segment contributes to the encryption of the next plaintext segment
+        
+        """
         blowfish_encrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
         blowfish_decrypt = Blowfish.new(key, Blowfish.MODE_CFB, iv)
 
