@@ -1,5 +1,12 @@
 import hashlib
 from binascii import hexlify
+import scrypt, secrets
+
+password = b'not a number'
+salt = secrets.token_bytes(32)
+scrypt_key = scrypt.hash(password, salt, N=16384, r=8, p=1, 32)
+print('Salt: ', salt)
+print('Key: ', scrypt_key)
 
 data = input("Enter message: ")
 data = str.encode(data)
